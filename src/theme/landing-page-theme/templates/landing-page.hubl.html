@@ -5,20 +5,29 @@
 -->
 {% extends "./layouts/base.hubl.html" %}
 
+{% import "../helpers/variables.hubl.html" %}
+
 {% block body %}
   {% dnd_area "dnd_area"
     label="Main section"
   %}
-    {% dnd_section %}
+    {% dnd_section
+      padding={
+        "top": section_vertical_spacing_medium,
+        "bottom": section_vertical_spacing_medium
+      }
+    %}
       {% dnd_column %}
         {% dnd_row %}
           {% dnd_module
             path="../components/modules/Button",
             groupButtons=[
               {
-                "buttonContentText": "Learn more",
+                "buttonContentText": "Button 1",
                 "buttonContentLink": {
-                  "open_in_new_tab": true
+                  "url": {
+                    "href": "#"
+                  }
                 },
                 "buttonContentShowIcon": false,
                 "buttonContentIcon": {
@@ -32,13 +41,165 @@
                 "horizontal_align": "CENTER"
               },
               "buttonStyleSize": "medium",
-              "buttonStyleVariant": "primary",
-              "gap": "medium"
+              "buttonStyleVariant": "primary"
             }
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
       {% end_dnd_column %}
     {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "top": section_vertical_spacing_medium,
+        "bottom": section_vertical_spacing_medium
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/Button",
+            groupButtons=[
+              {
+                "buttonContentText": "Button 2",
+                "buttonContentLink": {
+                  "url": {
+                    "href": "#"
+                  }
+                },
+                "buttonContentShowIcon": false,
+                "buttonContentIcon": {
+                  "name": "arrow-right"
+                },
+                "buttonContentIconPosition": "right"
+              }
+            ],
+            groupStyle={
+              "alignment": {
+                "horizontal_align": "CENTER"
+              },
+              "buttonStyleSize": "medium",
+              "buttonStyleVariant": "primary"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "top": section_vertical_spacing_medium,
+        "bottom": section_vertical_spacing_medium
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/Button",
+            groupButtons=[
+              {
+                "buttonContentText": "Button 3",
+                "buttonContentLink": {
+                  "url": {
+                    "href": "#"
+                  }
+                },
+                "buttonContentShowIcon": false,
+                "buttonContentIcon": {
+                  "name": "arrow-right"
+                },
+                "buttonContentIconPosition": "right"
+              }
+            ],
+            groupStyle={
+              "alignment": {
+                "horizontal_align": "CENTER"
+              },
+              "buttonStyleSize": "medium",
+              "buttonStyleVariant": "primary"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "top": section_vertical_spacing_medium,
+        "bottom": section_vertical_spacing_medium
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/Button",
+            groupButtons=[
+              {
+                "buttonContentText": "Button 4",
+                "buttonContentLink": {
+                  "url": {
+                    "href": "#"
+                  }
+                },
+                "buttonContentShowIcon": false,
+                "buttonContentIcon": {
+                  "name": "arrow-right"
+                },
+                "buttonContentIconPosition": "right"
+              }
+            ],
+            groupStyle={
+              "alignment": {
+                "horizontal_align": "CENTER"
+              },
+              "buttonStyleSize": "medium",
+              "buttonStyleVariant": "primary"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section
+      padding={
+        "top": section_vertical_spacing_medium,
+        "bottom": section_vertical_spacing_medium
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/Button",
+            groupButtons=[
+              {
+                "buttonContentText": "Button 5",
+                "buttonContentLink": {
+                  "url": {
+                    "href": "#"
+                  }
+                },
+                "buttonContentShowIcon": false,
+                "buttonContentIcon": {
+                  "name": "arrow-right"
+                },
+                "buttonContentIconPosition": "right"
+              }
+            ],
+            groupStyle={
+              "alignment": {
+                "horizontal_align": "CENTER"
+              },
+              "buttonStyleSize": "medium",
+              "buttonStyleVariant": "primary"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
   {% end_dnd_area %}
 {% endblock body %}
