@@ -48,11 +48,7 @@ function generatePaddingCSSVars(buttonSize: StandardSizeType): CSSPropertiesMap 
   return { '--hsElevate--button__padding': BUTTON_SIZE_PADDING_MAP[buttonSize] };
 }
 
-const DefaultContent = () => (
-  <>
-    <span>Default Button</span>
-  </>
-);
+const DefaultContent = () => <span>Default Button</span>;
 
 export const Button = (props: ButtonProps) => {
   const { ariaLabel, additionalClassArray, rel, href, target, buttonStyle, buttonSize, children, showIcon, iconFieldPath, iconPosition } = props;

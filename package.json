@@ -18,6 +18,8 @@
     "deploy": "hs project upload",
     "test": "vitest",
     "test-verbose": "vitest --reporter verbose",
+    "typecheck": "npm run typecheck --prefix src/theme/landing-page-theme",
+    "typecheck:modules": "npm run typecheck:modules --prefix src/theme/landing-page-theme",
     "npm-install:all": "npm install && npm install --prefix src/theme/landing-page-theme"
   },
   "engines": {

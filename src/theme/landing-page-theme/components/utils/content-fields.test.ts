@@ -19,7 +19,7 @@ describe('getLinkFieldHref', () => {
 
   test('returns regular link for other types', () => {
     const fieldValue: LinkFieldType['default'] = {
-      url: { href: 'http://example.com', type: 'OTHER', content_id: 3 },
+      url: { href: 'http://example.com', type: 'EXTERNAL', content_id: 3 },
     };
     expect(getLinkFieldHref(fieldValue)).toBe('http://example.com');
   });

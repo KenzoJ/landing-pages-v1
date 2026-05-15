@@ -44,7 +44,17 @@ export function getAlignmentFieldCss(fieldValue: AlignmentFieldType['default']):
 
 // Borders
 
-export function getBorderFieldCss(borderStyle = {}) {
+type BorderSide = {
+  style?: string;
+  width?: { value?: number; units?: string };
+  color?: string;
+};
+
+type BorderStyle = {
+  top?: BorderSide;
+};
+
+export function getBorderFieldCss(borderStyle: BorderStyle = {}) {
   const { style = 'solid', width = {}, color = '' } = borderStyle.top || {};
 
   const borderSize = width.value ? `${width.value}${width.units}` : '';

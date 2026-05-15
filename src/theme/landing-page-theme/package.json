@@ -4,7 +4,9 @@
   "description": "CMS React GLG theme",
   "scripts": {
     "start": "hs-cms-dev-server .",
-    "deploy": "hs project upload"
+    "deploy": "hs project upload",
+    "typecheck": "tsc --noEmit --pretty",
+    "typecheck:modules": "tsc --noEmit --pretty -p tsconfig.modules.json"
   },
   "type": "module",
   "keywords": [],
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@hubspot/cms-dev-server": "latest",
     "@testing-library/react": "^16",
-    "@vitejs/plugin-react": "^4"
+    "@vitejs/plugin-react": "^4",
+    "typescript": "^5"
   }
 }
