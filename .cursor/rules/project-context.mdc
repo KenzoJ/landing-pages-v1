@@ -1,0 +1,36 @@
+---
+description: HubSpot project scope and workspace boundaries for landing-pages-v1
+alwaysApply: false
+---
+# Project context
+
+This is a **HubSpot CMS** project (CMS React theme, HubL templates, and `fields.json`).
+
+## Active project
+
+- **Current project**: `landing-pages-v1` (repo root).
+- **Theme source**: `src/theme/landing-page-theme/`
+- Default all reads, edits, search, grep, and terminal work to this repo unless the user says otherwise.
+
+## Workspace sibling (reference only)
+
+The workspace may also include `cms-elevate-theme-public` (Elevate theme reference).
+
+- **Do not** search, grep, read, or copy from that folder unless the user explicitly asks (e.g. “check Elevate”, “look in cms-elevate-theme-public”).
+- When asked, use it as reference only; implement changes in `landing-pages-v1`.
+
+## Common paths
+
+| Area | Path |
+|------|------|
+| React modules | `src/theme/landing-page-theme/components/modules/` |
+| Field library | `src/theme/landing-page-theme/components/fieldLibrary/` |
+| Shared utils | `src/theme/landing-page-theme/components/utils/` |
+| Theme fields | `src/theme/landing-page-theme/fields.json` |
+| HubL templates | `src/theme/landing-page-theme/templates/` |
+
+## Commands
+
+- Theme dev server: `npm start` from `src/theme/landing-page-theme/`
+- Project upload: `npm run upload` or `hs project upload` from repo root
+- Tests: `npm test` from repo root (Vitest)

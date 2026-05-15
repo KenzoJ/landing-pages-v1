@@ -1,0 +1,30 @@
+---
+description: HubSpot CMS React module conventions for landing-page-theme
+globs: src/theme/landing-page-theme/**/*
+alwaysApply: false
+---
+
+# HubSpot CMS React (landing-page-theme)
+
+## Module structure
+
+- One module per folder under `components/modules/<ModuleName>/`: `index.tsx`, `fields.tsx`, optional `*.module.css`, `_locales/`.
+- Reusable field groups live in `components/fieldLibrary/`; export from `components/fieldLibrary/index.ts`.
+- Shared UI in `components/<Name>Component/` when used across modules.
+
+## Patterns in this repo
+
+- Use **CSS modules** (`*.module.css`) for module and component styles.
+- Use existing helpers: `create-component`, `content-fields`, `classnames` under `components/utils/`.
+- Types live under `components/types/` (`fields.ts`, `modules.ts`, `components.ts`).
+
+## HubSpot specifics
+
+- Module field definitions belong in `fields.tsx` (and theme-level defaults in `fields.json` when appropriate).
+- Do not invent HubSpot field APIs; match patterns from existing modules (e.g. Button, GettingStarted).
+- Prefer small, focused changes; avoid drive-by refactors outside the task scope.
+
+## Testing
+
+- Add or update Vitest tests for utils under `components/utils/` when changing shared logic.
+- Run `npm test` from the repo root before considering utils work done.

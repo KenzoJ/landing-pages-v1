@@ -1,17 +1,24 @@
 {
-  "name": "getting-started-with-cms-react",
+  "name": "landing-page-react-theme",
   "description": "Getting started with CMS React",
   "devDependencies": {
     "@hubspot/prettier-plugin-hubl": "latest",
+    "@types/node": "^25.7.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.10",
-    "prettier": "^2.7.1"
+    "jsdom": "^22",
+    "prettier": "^2.7.1",
+    "vitest": "^2.0.0"
   },
   "scripts": {
+    "upload": "hs project upload",
     "start": "cd src/theme/landing-page-theme && npm start",
     "prettier": "prettier . --check",
-    "deploy": "hs project upload"
+    "deploy": "hs project upload",
+    "test": "vitest",
+    "test-verbose": "vitest --reporter verbose",
+    "npm-install:all": "npm install && npm install --prefix src/theme/landing-page-theme"
   },
   "engines": {
     "node": ">=20.0.0"
