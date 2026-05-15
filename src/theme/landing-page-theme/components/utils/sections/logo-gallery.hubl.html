@@ -1,0 +1,202 @@
+<!--
+  templateType: section
+  label: Logo gallery
+  isAvailableForNewContent: true
+  landingPageSectionCategories: [SOCIAL_PROOF]
+  scaffoldSchemaPath: ./schemas/logo-gallery.scaffold_schema.json
+  goals: [GROW_PRESENCE]
+  screenshotPath: ../images/section-previews/logo-gallery.png
+  description: "Full size background color section with middle centered title with an grid of logos below."
+-->
+
+{#
+  Context variables
+    - section_variant: Determines the section variant style.
+    - logo_colors: Determines whether to use light or dark logos.
+    - background_color: Sets the background color of the section.
+    - content: Provides the content for the heading.
+#}
+
+{# Section variables #}
+
+{% set template_translations = load_translations("../templates/_locales", html_lang, "en") %}
+{% import "../helpers/variables.hubl.html" %}
+{% set section_variant = context.section_variant or "section_variant_1" %}
+
+{# Dynamically gets light/dark logos based on section context #}
+{% set light_logos = [
+  get_asset_url("../images/logo-1.png"),
+  get_asset_url("../images/logo-2.png"),
+  get_asset_url("../images/logo-3.png"),
+  get_asset_url("../images/logo-4.png"),
+  get_asset_url("../images/logo-5.png"),
+  get_asset_url("../images/logo-6.png")
+]
+%}
+{% set dark_logos = [
+  get_asset_url("../images/hexagontalxio-dark.png"),
+  get_asset_url("../images/reviluxify-dark.png"),
+  get_asset_url("../images/zyntellix-dark.png"),
+  get_asset_url("../images/crypturon-dark.png"),
+  get_asset_url("../images/spectroxium-dark.png"),
+  get_asset_url("../images/lyraxionics-dark.png")
+]
+%}
+
+{% if context.logo_colors == "light" %}
+  {% set logos = light_logos %}
+{% else %}
+  {% set logos = dark_logos %}
+{% endif %}
+
+{# Section #}
+
+{% dnd_section
+  background_color={{ context.background_color or dark_section_1_background_color  }},
+  padding={
+    "top": section_vertical_spacing_extra_small,
+    "bottom": section_vertical_spacing_extra_small
+  }
+%}
+  {% dnd_column %}
+    {% dnd_row %}
+      {% dnd_module
+        path="../components/modules/Anchor",
+        anchor={{ context.anchor_id or scaffold_content.anchor.anchor_id }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+    {% dnd_row %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/RichText"
+            groupStyle={
+              "sectionStyleVariant": section_variant
+            }
+          %}
+            {% module_attribute "richTextContentHTML" %}
+              <div style="text-align: center;">
+                <p>{{ context.content or scaffold_content.heading or template_translations.section_logo_gallery_heading.message }}</p>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../components/modules/RichText"
+          %}
+            {% module_attribute "richTextContentHTML" %}
+              <style>
+                .logo-carousel {
+                  overflow: hidden;
+                  white-space: nowrap;
+                  position: relative;
+                  width: 100%;
+                  margin: 2rem 0;
+                  mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+                }
+                
+                .logo-carousel-track {
+                  display: inline-flex;
+                  animation: scroll-logos 25s linear infinite;
+                  gap: 4rem;
+                  align-items: center;
+                }
+                
+                .logo-carousel-item {
+                  flex-shrink: 0;
+                  height: 60px;
+                  opacity: 0.6;
+                  transition: opacity 0.3s ease, filter 0.3s ease;
+                  filter: grayscale(100%);
+                }
+                
+                .logo-carousel:hover .logo-carousel-item {
+                  opacity: 0.8;
+                }
+                
+                .logo-carousel-item:hover {
+                  opacity: 1 !important;
+                  filter: grayscale(0%);
+                }
+                
+                .logo-carousel-item img {
+                  height: 100%;
+                  width: auto;
+                  object-fit: contain;
+                }
+                
+                @keyframes scroll-logos {
+                  0% {
+                    transform: translateX(0);
+                  }
+                  100% {
+                    transform: translateX(-50%);
+                  }
+                }
+                
+                /* Pause animation on hover */
+                .logo-carousel:hover .logo-carousel-track {
+                  animation-play-state: paused;
+                }
+                
+                @media (max-width: 768px) {
+                  .logo-carousel-track {
+                    gap: 3rem;
+                  }
+                  .logo-carousel-item {
+                    height: 45px;
+                  }
+                }
+              </style>
+              
+              <div class="logo-carousel">
+                <div class="logo-carousel-track">
+                  <!-- First set of logos -->
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_one.src or logos[0] }}" alt="{{ scaffold_content.group_logos.logo_one.alt or '' }}" loading="eager" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_two.src or logos[1] }}" alt="{{ scaffold_content.group_logos.logo_two.alt or '' }}" loading="eager" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_three.src or logos[2] }}" alt="{{ scaffold_content.group_logos.logo_three.alt or '' }}" loading="eager" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_four.src or logos[3] }}" alt="{{ scaffold_content.group_logos.logo_four.alt or '' }}" loading="eager" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_five.src or logos[4] }}" alt="{{ scaffold_content.group_logos.logo_five.alt or '' }}" loading="eager" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_six.src or logos[5] }}" alt="{{ scaffold_content.group_logos.logo_six.alt or '' }}" loading="eager" />
+                  </div>
+                  <!-- Duplicate set for seamless loop -->
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_one.src or logos[0] }}" alt="{{ scaffold_content.group_logos.logo_one.alt or '' }}" loading="lazy" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_two.src or logos[1] }}" alt="{{ scaffold_content.group_logos.logo_two.alt or '' }}" loading="lazy" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_three.src or logos[2] }}" alt="{{ scaffold_content.group_logos.logo_three.alt or '' }}" loading="lazy" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_four.src or logos[3] }}" alt="{{ scaffold_content.group_logos.logo_four.alt or '' }}" loading="lazy" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_five.src or logos[4] }}" alt="{{ scaffold_content.group_logos.logo_five.alt or '' }}" loading="lazy" />
+                  </div>
+                  <div class="logo-carousel-item">
+                    <img src="{{ scaffold_content.group_logos.logo_six.src or logos[5] }}" alt="{{ scaffold_content.group_logos.logo_six.alt or '' }}" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+{% end_dnd_section %}
