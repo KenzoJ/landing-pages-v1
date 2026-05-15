@@ -12,7 +12,6 @@
       <link rel="shortcut icon" href="{{ brand_settings.primaryFavicon.src }}" />
     {% endif %}
     <meta name="description" content="{{ page_meta.meta_description }}" />
-    {# To see a full list of what is included via standard_footer_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
     {{ standard_header_includes }}
   </head>
   <body>
@@ -20,7 +19,6 @@
       {% block body %}
       {% endblock body %}
     </div>
-    {# To see a full list of what is included via standard_footer_includes please reference this article: https://developers.hubspot.com/docs/cms/hubl/variables#required-page-template-variables #}
     {{ standard_footer_includes }}
   </body>
 </html>

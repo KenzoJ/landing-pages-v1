@@ -1,8 +1,8 @@
 {
-  "uid": "theme",
+  "uid": "landing-page-theme-2026",
   "type": "theme",
   "config": {
-    "themePath": "my-theme",
+    "themePath": "landing-page-theme",
     "secretNames": []
   }
 }
