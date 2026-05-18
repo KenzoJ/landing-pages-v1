@@ -17,87 +17,35 @@
         "background_size": "cover"
       }
     %}
-    
-  {% dnd_area "dnd_area"
-    label="Main area"
-  %}
 
-    {% dnd_section
-    label="Intro"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
+    {% module
+      "LogoCarousel"
+      path="../components/modules/LogoCarousel",
     %}
 
-    {% end_dnd_section %}
+    {% module
+      "Gallery"
+      path="../components/modules/Gallery",
+    %}
 
-    {% dnd_section
-    label="logo_gallery"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
+    {% module
+      "Data"
+      path="../components/modules/Data",
     %}
-    {% end_dnd_section %}
 
-    {% dnd_section
-      label="listings",
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
+    {% module
+      "InformationWidget"
+      path="../components/modules/InformationWidget",
     %}
-      {% dnd_module
-        path="../components/modules/GettingStarted",
-        brandColors="{{ theme.brand_color }}"
-      %}
-      {% end_dnd_module %}
-    {% end_dnd_section %}
 
-    {% dnd_section
-    label="data_view"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
+    {% module
+      "SocialProof"
+      path="../components/modules/SocialProof",
     %}
-    {% end_dnd_section %}
 
-    {% dnd_section
-    label="data_view"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
+    {% module
+      "CTA"
+      path="../components/modules/CTA",
     %}
-    {% end_dnd_section %}
-
-    {% dnd_section
-    label="information_widget"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
-    %}
-    {% end_dnd_section %}
-    {% dnd_section
-    label="social_proof"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
-    %}
-    {% end_dnd_section %}
-    {% dnd_section
-    label="cta"
-      padding={
-        "top": section_vertical_spacing_medium,
-        "bottom": section_vertical_spacing_medium
-      }
-    %}
-    {% end_dnd_section %}
-
-  {% end_dnd_area %}
 
 {% endblock body %}

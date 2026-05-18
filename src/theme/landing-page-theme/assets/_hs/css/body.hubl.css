@@ -1,0 +1,11 @@
+{% import "../../../helpers/variables.hubl.html" %}
+
+.theme-body-dark {
+  --page-background-color: {{ dark_section_1_background_color }};
+}
+
+.theme-body-dark .body-wrapper {
+  background-color: var(--page-background-color);
+  color: {{ dark_section_1_text_color }};
+  min-height: 100vh;
+}
