@@ -12,12 +12,6 @@ This is a **HubSpot CMS** project (CMS React theme, HubL templates, and `fields.
 - **Theme source**: `src/theme/landing-page-theme/`
 - Default all reads, edits, search, grep, and terminal work to this repo unless the user says otherwise.
 
-## Workspace sibling (reference only)
-
-The workspace may also include `cms-elevate-theme-public` (Elevate theme reference).
-
-- **Do not** search, grep, read, or copy from that folder unless the user explicitly asks (e.g. “check Elevate”, “look in cms-elevate-theme-public”).
-- When asked, use it as reference only; implement changes in `landing-pages-v1`.
 
 ## Common paths
 

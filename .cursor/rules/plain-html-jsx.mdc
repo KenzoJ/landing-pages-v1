@@ -1,0 +1,25 @@
+---
+description: Use plain HTML in JSX — no motion.* or <motion> wrappers
+globs: src/theme/landing-page-theme/**/*.tsx
+alwaysApply: false
+---
+
+# Plain HTML in JSX
+
+This project does **not** use Framer Motion. There is no `framer-motion` dependency.
+
+## Layout markup
+
+- Use standard HTML elements only: `div`, `section`, `article`, `header`, `nav`, `main`, `aside`, `footer`, `button`, `ul`, `li`, etc.
+- Do **not** use `motion.div`, `motion.section`, `import { motion } from 'framer-motion'`, or a bare `<motion>` tag as a layout wrapper.
+- When scaffolding structure, default to `div` / `section` — never reach for Motion components out of habit.
+
+```tsx
+// ❌ BAD — not in this repo
+<motion className={styles.inner}>
+<motion.div className={styles.layout}>
+
+// ✅ GOOD
+<div className={styles.inner}>
+<div className={styles.layout}>
+```

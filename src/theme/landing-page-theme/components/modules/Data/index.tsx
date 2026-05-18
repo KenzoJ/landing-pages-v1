@@ -1,15 +1,45 @@
-import { ModuleFields } from '@hubspot/cms-components/fields';
+import { TextFieldType } from '@hubspot/cms-components/fields';
+import styles from './data.module.css';
 
-export function Component() {
+type MetricFields = {
+  metric: TextFieldType['default'];
+  description: TextFieldType['default'];
+};
+
+type DataFieldValues = {
+  metricOne: MetricFields;
+  metricTwo: MetricFields;
+  metricThree: MetricFields;
+};
+
+type DataProps = {
+  fieldValues: DataFieldValues;
+};
+
+function MetricItem({ metric, description }: MetricFields) {
   return (
-    <div>
-      <div />
-      <div aria-hidden="true" />
+    <div className={styles.metric}>
+      {metric && <p className={styles.value}>{metric}</p>}
+      {description && <p className={styles.description}>{description}</p>}
     </div>
   );
 }
 
-export const fields = <ModuleFields>{null}</ModuleFields>;
+export function Component({ fieldValues }: DataProps) {
+  const metrics = [fieldValues.metricOne, fieldValues.metricTwo, fieldValues.metricThree];
+
+  return (
+    <section className={styles.data} aria-label="Data">
+      <div className={styles.grid}>
+        {metrics.map((item, index) => (
+          <MetricItem key={index} {...item} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export { fields } from './fields.js';
 
 export const meta = {
   label: 'Data',
