@@ -4,7 +4,7 @@ import { StandardSizeType } from '../../types/fields.js';
 import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
 import { getAlignmentFieldCss } from '../../utils/style-fields.js';
 import styles from './button.module.css';
-import { Button } from '../../ButtonComponent/index.js';
+import { Button } from './ButtonComponent.js';
 import buttonIconSvg from './assets/button.svg';
 import { ButtonContentType } from '../../fieldLibrary/ButtonContent/types.js';
 import { ButtonStyleFieldLibraryType } from '../../fieldLibrary/ButtonStyle/types.js';

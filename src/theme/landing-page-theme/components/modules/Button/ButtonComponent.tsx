@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import { ButtonStyleType, StandardSizeType, ElementPositionType } from '../types/fields.js';
+import { ButtonStyleType, StandardSizeType, ElementPositionType } from '../../types/fields.js';
 import styles from './button.module.css';
-import cx, { staticWithModule } from '../utils/classnames.js';
+import cx, { staticWithModule } from '../../utils/classnames.js';
 import { Icon } from '@hubspot/cms-components';
-import { CSSPropertiesMap } from '../types/components.js';
+import { CSSPropertiesMap } from '../../types/components.js';
 
 export const BUTTON_SIZE_PADDING_MAP: Record<StandardSizeType, string> = {
   small: 'var(--hsElevate--spacing--12, 12px) var(--hsElevate--spacing--20, 20px)',

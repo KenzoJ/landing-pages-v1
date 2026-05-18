@@ -1,7 +1,7 @@
 import { ModuleMeta } from '../../types/modules.js';
 import { TextAlignmentFieldType } from '@hubspot/cms-components/fields';
 import headingIconSvg from './assets/heading.svg';
-import HeadingComponent from '../../HeadingComponent/index.js';
+import HeadingComponent from './HeadingComponent.js';
 import { SectionVariantType } from '../../types/fields.js';
 import styles from './heading.module.css';
 import { SectionStyleFieldLibraryType } from '../../fieldLibrary/SectionStyle/types.js';

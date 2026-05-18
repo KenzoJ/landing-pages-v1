@@ -1,8 +1,9 @@
 import { CSSProperties } from 'react';
 import { TextFieldType, TextAlignmentFieldType } from '@hubspot/cms-components/fields';
-import { HeadingLevelType } from '../types/fields.js';
-import { HeadingStyleFieldLibraryType } from '../fieldLibrary/HeadingStyle/types.js';
-import SanitizedContent from '../SanitizeHTML/index.js';
+import { HeadingLevelType } from '../../types/fields.js';
+import { HeadingStyleFieldLibraryType } from '../../fieldLibrary/HeadingStyle/types.js';
+import SanitizedContent from '../../SanitizeHTML/index.js';
+
 
 // Types
 
