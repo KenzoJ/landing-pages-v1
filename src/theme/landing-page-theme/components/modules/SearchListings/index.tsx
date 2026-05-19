@@ -14,4 +14,8 @@ export function SearchListings({ fieldValues }: SearchListingsProps) {
 }
 
 export type { SearchListingsFieldValues };
-export { fields, searchListingsDefault } from './fields.js';
+export {
+  fields,
+  searchListingsNestedFields,
+  searchListingsDefault,
+} from './fields.js';

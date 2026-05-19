@@ -34,25 +34,32 @@
       {% module
         "Gallery"
         path="../components/modules/Gallery",
+        sectionOne={
+          "image": {
+            "src": get_asset_url("../images/vertical-placeholder-gray.jpg"),
+            "alt": ""
+          }
+        },
+        sectionTwo={
+          "image": {
+            "src": get_asset_url("../images/vertical-placeholder-gray.jpg"),
+            "alt": ""
+          }
+        },
+        sectionThree={
+          "image": {
+            "src": get_asset_url("../images/vertical-placeholder-gray.jpg"),
+            "alt": ""
+          }
+        }
       %}
+
     </div>
 
     <div class="lp-scroll lp-scroll--2" data-lp-scroll="2">
       {% module
         "Data"
         path="../components/modules/Data",
-        metricOne={
-          "metric": "300+",
-          "description": "Large Projects"
-        },
-        metricTwo={
-          "metric": "$18M+",
-          "description": "Total Bookings to Date"
-        },
-        metricThree={
-          "metric": "500+",
-          "description": "Partner Vendors"
-        }
       %}
 
       {% module

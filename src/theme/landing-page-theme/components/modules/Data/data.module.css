@@ -1,3 +1,9 @@
+@property --num {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
 .data {
   padding-inline: clamp(1.25rem, 4vw, 2rem);
 }
@@ -20,16 +26,73 @@
 }
 
 .value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
   margin: 0;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 600;
   line-height: 1.1;
 }
 
+.counter {
+  --num: 0;
+  counter-reset: num var(--num);
+}
+
+.counter::after {
+  content: counter(num);
+}
+
+:global(.lp-scroll--revealed) .counter {
+  animation: data-count-up 2s ease-out forwards;
+}
+
+.metric:nth-child(1) .counter {
+  animation-delay: 0s;
+}
+
+.metric:nth-child(2) .counter {
+  animation-delay: 0.15s;
+}
+
+.metric:nth-child(3) .counter {
+  animation-delay: 0.3s;
+}
+
+@keyframes data-count-up {
+  from {
+    --num: 0;
+  }
+
+  to {
+    --num: var(--target);
+  }
+}
+
 .description {
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counter {
+    --num: var(--target);
+    animation: none;
+  }
 }
 
 @media (max-width: 48rem) {

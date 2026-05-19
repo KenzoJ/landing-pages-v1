@@ -1,4 +1,4 @@
-import { TextField, FieldGroup } from '@hubspot/cms-components/fields';
+import { ModuleFields, TextField, FieldGroup } from '@hubspot/cms-components/fields';
 import { ButtonContent } from '../../fieldLibrary/index.js';
 
 export const studioPlaceholderDefault = 'Studios';
@@ -22,7 +22,8 @@ export const searchListingsDefault = {
   button: buttonDefault,
 };
 
-export const fields = (
+/** Use inside another module's FieldGroup (e.g. Intro). Not wrapped in ModuleFields. */
+export const searchListingsNestedFields = (
   <>
     <TextField
       name="studioPlaceholder"
@@ -44,3 +45,6 @@ export const fields = (
     </FieldGroup>
   </>
 );
+
+/** Root fields when SearchListings is rendered as its own module (dev server / CMS). */
+export const fields = <ModuleFields>{searchListingsNestedFields}</ModuleFields>;

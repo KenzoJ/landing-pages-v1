@@ -7,7 +7,7 @@ import {
 import placeholderImage from '../../../images/placeholder.png';
 import {
   SearchListings,
-  fields as searchListingsFields,
+  searchListingsNestedFields,
   searchListingsDefault,
 } from '../SearchListings/index.js';
 import typography from '../../styles/typography.module.css';
@@ -71,7 +71,7 @@ export const fields = (
       label="Search listings"
       default={searchListingsDefault}
     >
-      {searchListingsFields}
+      {searchListingsNestedFields}
     </FieldGroup>
     <TextField
       name="tagline"
