@@ -11,7 +11,11 @@ const OPTIONS = [
 
 export function Component() {
   return (
-    <section className={styles.widget} aria-label="Information">
+    <section
+      className={styles.widget}
+      aria-label="Information"
+      data-lp-reveal="information-widget"
+    >
       <div className={styles.inner}>
         <div className={styles.layout}>
           <div className={styles.options}>

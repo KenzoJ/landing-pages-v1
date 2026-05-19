@@ -16,7 +16,7 @@ export function Component({ fieldValues }: CtaProps) {
   const { headline } = fieldValues;
 
   return (
-    <section className={styles.cta} aria-label="Call to action">
+    <section className={styles.cta} aria-label="Call to action" data-lp-reveal="cta">
       <div className={styles.inner}>
         {headline && <h2 className={styles.headline}>{headline}</h2>}
         <div className={styles.form}>

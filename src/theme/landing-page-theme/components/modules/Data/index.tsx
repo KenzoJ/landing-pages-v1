@@ -34,7 +34,7 @@ export function Component({ fieldValues }: DataProps) {
   const metrics = [fieldValues.metricOne, fieldValues.metricTwo, fieldValues.metricThree];
 
   return (
-    <section className={styles.data} aria-label="Data">
+    <section className={styles.data} aria-label="Data" data-lp-reveal="data">
       <div className={styles.grid}>
         {metrics.map((item, index) => (
           <MetricItem key={index} {...item} />

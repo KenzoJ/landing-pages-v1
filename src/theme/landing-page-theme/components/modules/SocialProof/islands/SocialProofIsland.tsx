@@ -36,7 +36,11 @@ export default function SocialProofIsland({ fieldValues }: SocialProofIslandProp
   const { src: headshotSrc, alt: headshotAlt, width, height } = active.headshot ?? {};
 
   return (
-    <section className={styles.socialProof} aria-label="Social proof">
+    <section
+      className={styles.socialProof}
+      aria-label="Social proof"
+      data-lp-reveal="social-proof"
+    >
       <div className={styles.inner}>
         <div className={styles.layout}>
           <div className={styles.media}>

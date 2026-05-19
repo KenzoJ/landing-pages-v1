@@ -30,7 +30,6 @@
 
 .imageWrapper {
   overflow: hidden;
-  border-radius: 0.25rem;
   background-color: var(--hsElevate--section--lightSection--1__backgroundColor, #eef1f4);
 }
 

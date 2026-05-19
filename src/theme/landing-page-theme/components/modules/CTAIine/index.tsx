@@ -18,7 +18,11 @@ export function Component({ fieldValues }: CTAIineProps) {
   const { headline, button } = fieldValues;
 
   return (
-    <section className={styles.ctaLine} aria-label="Call to action">
+    <section
+      className={styles.ctaLine}
+      aria-label="Call to action"
+      data-lp-reveal="cta-line"
+    >
       <div className={styles.inner}>
         <div className={styles.layout}>
           {headline && (

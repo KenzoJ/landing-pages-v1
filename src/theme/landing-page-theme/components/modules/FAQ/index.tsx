@@ -20,7 +20,11 @@ export function Component({ fieldValues }: FaqProps) {
   const { headline, sections = [] } = fieldValues;
 
   return (
-    <section className={styles.faq} aria-label="Frequently asked questions">
+    <section
+      className={styles.faq}
+      aria-label="Frequently asked questions"
+      data-lp-reveal="faq"
+    >
       {headline && (
         <h2 className={`${styles.headline} ${typography.sectionHeader}`}>{headline}</h2>
       )}

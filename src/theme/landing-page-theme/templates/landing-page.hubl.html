@@ -8,6 +8,8 @@
 {% import "../helpers/variables.hubl.html" %}
 
 {% block body %}
+    {{ require_css(get_asset_url("../assets/_hs/css/landing-page-scroll.hubl.css")) }}
+
     {% module
     "Intro"
       path="../components/modules/Intro",
@@ -17,81 +19,94 @@
       }
     %}
 
-    {% module
-      "LogoCarousel"
-      path="../components/modules/LogoCarousel",
-    %}
-
-    {% module
-      "TitleText"
-      path="../components/modules/TitleText",
-      title="Curated Top picks in LOCATION",
-    %}
-
-    {% module
-      "Gallery"
-      path="../components/modules/Gallery",
-    %}
-
-    {% module
-      "Data"
-      path="../components/modules/Data",
-      metricOne={
-        "metric": "300+",
-        "description": "Large Projects"
-      },
-      metricTwo={
-        "metric": "$18M+",
-        "description": "Total Bookings to Date"
-      },
-      metricThree={
-        "metric": "500+",
-        "description": "Partner Vendors"
-      }
-    %}
-
-    {% module
-      "TitleText2"
-      path="../components/modules/TitleTextServices",
-    %}
-
-    {% module
-      "InformationWidget"
-      path="../components/modules/InformationWidget",
-    %}
-
-    {% module
-      "CTAIine"
-      path="../components/modules/CTAIine",
-      headline="Let us do the hard work for you",
-      button={
-        "buttonContentText": "Book New York Studios",
-        "buttonContentLink": {
-          "open_in_new_tab": false
-        },
-        "buttonContentShowIcon": false,
-        "buttonContentIcon": {
-          "name": "arrow-right"
-        },
-        "buttonContentIconPosition": "right"
-      }
-    %}
-
-    {% module
-      "SocialProof"
-      path="../components/modules/SocialProof",
-    %}
-
-    <div class="faq-cta-row">
+    <div class="lp-scroll lp-scroll--1" data-lp-scroll="1">
       {% module
-        "FAQ"
-        path="../components/modules/FAQ",
+        "LogoCarousel"
+        path="../components/modules/LogoCarousel",
       %}
 
       {% module
-        "CTA"
-        path="../components/modules/CTA",
+        "TitleText"
+        path="../components/modules/TitleText",
+        title="Curated Top picks in LOCATION",
+      %}
+
+      {% module
+        "Gallery"
+        path="../components/modules/Gallery",
       %}
     </div>
+
+    <div class="lp-scroll lp-scroll--2" data-lp-scroll="2">
+      {% module
+        "Data"
+        path="../components/modules/Data",
+        metricOne={
+          "metric": "300+",
+          "description": "Large Projects"
+        },
+        metricTwo={
+          "metric": "$18M+",
+          "description": "Total Bookings to Date"
+        },
+        metricThree={
+          "metric": "500+",
+          "description": "Partner Vendors"
+        }
+      %}
+
+      {% module
+        "TitleText2"
+        path="../components/modules/TitleTextServices",
+      %}
+
+      {% module
+        "InformationWidget"
+        path="../components/modules/InformationWidget",
+      %}
+    </div>
+
+    <div class="lp-scroll lp-scroll--3" data-lp-scroll="3">
+      {% module
+        "CTAIine"
+        path="../components/modules/CTAIine",
+        headline="Let us do the hard work for you",
+        button={
+          "buttonContentText": "Book New York Studios",
+          "buttonContentLink": {
+            "open_in_new_tab": false
+          },
+          "buttonContentShowIcon": false,
+          "buttonContentIcon": {
+            "name": "arrow-right"
+          },
+          "buttonContentIconPosition": "right"
+        }
+      %}
+
+      {% module
+        "SocialProof"
+        path="../components/modules/SocialProof",
+      %}
+    </div>
+
+    <div class="lp-scroll lp-scroll--4" data-lp-scroll="4">
+      <div class="faq-cta-row">
+        {% module
+          "FAQ"
+          path="../components/modules/FAQ",
+        %}
+
+        {% module
+          "CTA"
+          path="../components/modules/CTA",
+        %}
+      </div>
+    </div>
+
+    {% module
+      "LandingPageReveal"
+      path="../components/modules/LandingPageReveal",
+    %}
 
 {% endblock body %}

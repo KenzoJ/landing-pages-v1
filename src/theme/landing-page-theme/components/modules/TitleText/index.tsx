@@ -9,13 +9,24 @@ type TitleTextFieldValues = {
 
 type TitleTextProps = {
   fieldValues: TitleTextFieldValues;
+  revealId?: string;
 };
 
-export function Component({ fieldValues }: TitleTextProps) {
+export function TitleTextSection({
+  fieldValues,
+  revealId,
+}: {
+  fieldValues: TitleTextFieldValues;
+  revealId: string;
+}) {
   const { title, subtitle } = fieldValues;
 
   return (
-    <section className={styles.titleText} aria-label="Title text">
+    <section
+      className={styles.titleText}
+      aria-label="Title text"
+      data-lp-reveal={revealId}
+    >
       <div className={styles.inner}>
         {title && (
           <p className={`${styles.title} ${typography.sectionHeader}`}>{title}</p>
@@ -26,6 +37,10 @@ export function Component({ fieldValues }: TitleTextProps) {
       </div>
     </section>
   );
+}
+
+export function Component({ fieldValues }: TitleTextProps) {
+  return <TitleTextSection fieldValues={fieldValues} revealId="title-text" />;
 }
 
 export { fields } from './fields.js';

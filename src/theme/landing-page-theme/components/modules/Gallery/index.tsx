@@ -66,7 +66,11 @@ export function Component({ fieldValues }: GalleryProps) {
   ];
 
   return (
-    <section className={styles.gallery} aria-label="Gallery">
+    <section
+      className={styles.gallery}
+      aria-label="Gallery"
+      data-lp-reveal="gallery"
+    >
       <div className={styles.inner}>
         <div className={styles.grid}>
           {sections.map((section, index) => (
