@@ -1,19 +1,26 @@
 import {
-  ModuleFields,
-  TextField,
-  LinkField,
-  ImageField,
-} from '@hubspot/cms-components/fields';
-import {
   getLinkFieldHref,
   getLinkFieldRel,
   getLinkFieldTarget,
 } from '../../utils/content-fields.js';
-import placeholderImage from '../../../images/vertical-placeholder-gray.jpg';
 import typography from '../../styles/typography.module.css';
 import styles from './gallery-item.module.css';
 
-export function Component({ fieldValues }) {
+type GalleryItemProps = {
+  fieldValues: {
+    title?: string;
+    location?: string;
+    image?: {
+      src?: string;
+      alt?: string;
+      width?: number;
+      height?: number;
+    };
+    sectionLink?: Parameters<typeof getLinkFieldHref>[0];
+  };
+};
+
+export function GalleryItem({ fieldValues }: GalleryItemProps) {
   const { title, location, image, sectionLink } = fieldValues;
   const href = getLinkFieldHref(sectionLink);
   const { src, alt, width, height } = image ?? {};
@@ -53,27 +60,19 @@ export function Component({ fieldValues }) {
   );
 }
 
-export const fields = (
-  <ModuleFields>
-    <TextField name="title" label="Title" default="Section Title" />
-    <TextField name="location" label="Location" default="Location" />
-    <ImageField
-      name="image"
-      label="Image"
-      resizable={true}
-      default={{ src: placeholderImage, alt: '' }}
-    />
-    <LinkField
-      name="sectionLink"
-      label="Link"
-      supportedTypes={['EXTERNAL']}
-      default={{
-        open_in_new_tab: false,
-        url: { href: 'https://example.com', type: 'EXTERNAL', content_id: null },
-      }}
-    />
-  </ModuleFields>
-);
+export function Component(props: GalleryItemProps) {
+  return (
+    <div className={styles.root}>
+      <GalleryItem {...props} />
+    </div>
+  );
+}
+
+export {
+  fields,
+  galleryItemNestedFields,
+  galleryItemDefault,
+} from './fields.js';
 
 export const meta = {
   label: 'Gallery Item',
