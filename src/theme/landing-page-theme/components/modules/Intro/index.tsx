@@ -1,65 +1,63 @@
 import {
   ModuleFields,
   TextField,
-  RichTextField,
-  BackgroundImageField,
+  ImageField,
+  FieldGroup,
 } from '@hubspot/cms-components/fields';
-import { RichText } from '@hubspot/cms-components';
 import placeholderImage from '../../../images/placeholder.png';
-import type { CSSPropertiesMap } from '../../types/components.js';
+import {
+  SearchListings,
+  fields as searchListingsFields,
+  searchListingsDefault,
+} from '../SearchListings/index.js';
+import typography from '../../styles/typography.module.css';
 import styles from './intro.module.css';
 
-function toCssBackgroundPosition(position?: string) {
-  if (!position) return 'center center';
-  return position.toLowerCase().replace(/_/g, ' ');
-}
-
-function getBackgroundCssVars(bgImage?: {
-  src?: string;
-  background_position?: string;
-  background_size?: string;
-}): CSSPropertiesMap | undefined {
-  const { src, background_position, background_size } = bgImage ?? {};
-  if (!src) return undefined;
-
-  return {
-    '--intro-bg-image': `url(${src})`,
-    '--intro-bg-position': toCssBackgroundPosition(background_position),
-    '--intro-bg-size': (background_size ?? 'COVER').toLowerCase(),
-  };
-}
-
 export function Component({ fieldValues }) {
-  const backgroundCssVars = getBackgroundCssVars(fieldValues.bg_image);
+  const { src, alt, width, height } = fieldValues.hero_image ?? {};
 
   return (
-    <div
-      className={
-        backgroundCssVars
-          ? `${styles.wrapper} ${styles.wrapperWithBackground}`
-          : styles.wrapper
-      }
-      style={backgroundCssVars}
-    >
-      <div className={styles.content}>
-        <h1>{fieldValues.headline}</h1>
-        <RichText fieldPath="gettingStarted" />
+    <div className={styles.intro}>
+      {src && (
+        <div className={styles.heroImageWrapper} aria-hidden={alt ? undefined : true}>
+          <img
+            className={styles.heroImage}
+            src={src}
+            alt={alt ?? ''}
+            width={width}
+            height={height}
+          />
+        </div>
+      )}
+      <div className={styles.contentStack}>
+        <div className={styles.copy}>
+          <h1 className={`${styles.headline} ${typography.sectionHeader}`}>
+            {fieldValues.headline}
+          </h1>
+        </div>
+        <div className={styles.searchPanel}>
+          <SearchListings fieldValues={fieldValues.searchListings} />
+        </div>
+        {fieldValues.tagline && (
+          <p className={`${styles.tagline} ${typography.subtitleText}`}>
+            {fieldValues.tagline}
+          </p>
+        )}
       </div>
-      <div className={styles.widgetPlaceholder} aria-hidden="true" />
     </div>
   );
 }
 
 export const fields = (
   <ModuleFields>
-    <BackgroundImageField
-      name="bg_image"
-      label="Background image"
+    <ImageField
+      name="hero_image"
+      label="Hero image"
       required={false}
+      resizable={true}
       default={{
         src: placeholderImage,
-        background_position: 'MIDDLE_CENTER',
-        background_size: 'COVER',
+        alt: '',
       }}
     />
 
@@ -68,10 +66,17 @@ export const fields = (
       label="Headline"
       default="Landing Page for LOCATION"
     />
-    <RichTextField
-      name="subtitle"
-      label="Subtitle"
-      default="Subtitle"
+    <FieldGroup
+      name="searchListings"
+      label="Search listings"
+      default={searchListingsDefault}
+    >
+      {searchListingsFields}
+    </FieldGroup>
+    <TextField
+      name="tagline"
+      label="Tagline"
+      default="Book space at the Speed of Production"
     />
   </ModuleFields>
 );

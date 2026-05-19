@@ -54,6 +54,13 @@
   object-fit: cover;
 }
 
+@media (min-width: 48.0625rem) {
+  .widget {
+    padding-block: clamp(3.5rem, 6vw, 5.5rem);
+    padding-inline: clamp(2rem, 5vw, 4rem);
+  }
+}
+
 @media (max-width: 48rem) {
   .layout {
     grid-template-columns: 1fr;

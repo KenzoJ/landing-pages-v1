@@ -1,0 +1,53 @@
+@keyframes titleTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .titleText {
+    animation: titleTextReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titleText {
+    animation: none;
+  }
+}
+
+.titleText {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  text-align: left;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}

@@ -1,28 +1,87 @@
-.wrapper {
+.intro {
+  --intro-fade: var(
+    --page-background-color,
+    var(--hsElevate--section--darkSection--1__backgroundColor, #09152b)
+  );
+
   position: relative;
-  min-height: 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 66vh;
   padding: 3rem 1.5rem;
-  background-color: var(--hsElevate--section--lightSection--1__backgroundColor, #f5f5f5);
+  overflow: hidden;
+  background-color: var(--intro-fade);
 }
 
-.content {
-  max-width: 42rem;
-}
-
-.widgetPlaceholder {
+.heroImageWrapper {
   position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: min(100%, 20rem);
-  min-height: 12rem;
-  border: 2px dashed var(--hsElevate--border__color, #c8c8c8);
-  border-radius: 0.25rem;
-  background-color: rgb(255 255 255 / 0.6);
+  inset: 0;
+  z-index: 0;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+  box-sizing: border-box;
 }
 
-.wrapperWithBackground {
-  background-image: var(--intro-bg-image);
-  background-position: var(--intro-bg-position, center center);
-  background-size: var(--intro-bg-size, cover);
-  background-repeat: no-repeat;
+.heroImageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--intro-fade) 50%, transparent) 0%,
+    color-mix(in srgb, var(--intro-fade) 18%, transparent) 40%,
+    transparent 72%
+  );
+}
+
+.heroImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contentStack {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: min(100%, 56rem);
+  text-align: center;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.headline {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+.searchPanel {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 1rem;
+  overflow-x: clip;
+  border-radius: 0.25rem;
+  background-color: rgb(255 255 255 / 0.92);
+  box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.08);
+}
+
+.tagline {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
 }

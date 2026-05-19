@@ -1,4 +1,5 @@
 import { TextFieldType } from '@hubspot/cms-components/fields';
+import typography from '../../styles/typography.module.css';
 import styles from './data.module.css';
 
 type MetricFields = {
@@ -19,8 +20,12 @@ type DataProps = {
 function MetricItem({ metric, description }: MetricFields) {
   return (
     <div className={styles.metric}>
-      {metric && <p className={styles.value}>{metric}</p>}
-      {description && <p className={styles.description}>{description}</p>}
+      {metric && (
+        <p className={`${styles.value} ${typography.sectionHeader}`}>{metric}</p>
+      )}
+      {description && (
+        <p className={`${styles.description} ${typography.subtitleText}`}>{description}</p>
+      )}
     </div>
   );
 }

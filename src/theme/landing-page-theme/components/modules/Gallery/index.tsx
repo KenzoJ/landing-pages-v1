@@ -5,10 +5,12 @@ import {
   getLinkFieldTarget,
 } from '../../utils/content-fields.js';
 import verticalPlaceholder from '../../../images/vertical_placeholder.jpg';
+import typography from '../../styles/typography.module.css';
 import styles from './gallery.module.css';
 
 type GallerySectionFields = {
-  text: TextFieldType['default'];
+  title: TextFieldType['default'];
+  location: TextFieldType['default'];
   sectionLink: LinkFieldType['default'];
 };
 
@@ -22,11 +24,14 @@ type GalleryProps = {
   fieldValues: GalleryFieldValues;
 };
 
-function GalleryItem({ text, sectionLink }: GallerySectionFields) {
+function GalleryItem({ title, location, sectionLink }: GallerySectionFields) {
   const href = getLinkFieldHref(sectionLink);
 
   return (
     <article className={styles.item}>
+      {title && (
+        <h3 className={`${styles.title} ${typography.sectionHeader}`}>{title}</h3>
+      )}
       <div className={styles.imageWrapper}>
         <img
           className={styles.image}
@@ -36,19 +41,19 @@ function GalleryItem({ text, sectionLink }: GallerySectionFields) {
           decoding="async"
         />
       </div>
-      <div className={styles.copy}>
-        {text && <p className={styles.text}>{text}</p>}
-        {href && (
-          <a
-            className={styles.link}
-            href={href}
-            rel={getLinkFieldRel(sectionLink)}
-            target={getLinkFieldTarget(sectionLink)}
-          >
-            Learn more
-          </a>
-        )}
-      </div>
+      {location && (
+        <p className={`${styles.location} ${typography.subtitleText}`}>{location}</p>
+      )}
+      {href && (
+        <a
+          className={`${styles.link} ${typography.accentText}`}
+          href={href}
+          rel={getLinkFieldRel(sectionLink)}
+          target={getLinkFieldTarget(sectionLink)}
+        >
+          Learn more
+        </a>
+      )}
     </article>
   );
 }

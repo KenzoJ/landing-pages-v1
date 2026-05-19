@@ -1,6 +1,28 @@
+:global(.faq-cta-row) .cta {
+  padding: 0;
+  background-color: transparent;
+}
+
+:global(.faq-cta-row) .inner {
+  align-items: flex-start;
+  width: 100%;
+  margin-inline: 0;
+  text-align: left;
+}
+
+:global(.faq-cta-row) .form {
+  width: 100%;
+  max-width: none;
+}
+
 .cta {
   padding-block: clamp(2rem, 5vw, 3.5rem);
   padding-inline: clamp(1.25rem, 4vw, 2rem);
+  background-color: var(
+    --hsElevate--section--darkSection--1__backgroundColor,
+    #09152b
+  );
+  color: var(--hsElevate--section--darkSection--1__textColor, #fff);
 }
 
 .inner {
@@ -18,4 +40,14 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 600;
   line-height: 1.2;
+}
+
+.form {
+  width: min(100%, 32rem);
+}
+
+.formFrame {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
 }

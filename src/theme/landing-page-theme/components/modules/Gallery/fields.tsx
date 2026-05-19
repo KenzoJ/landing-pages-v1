@@ -6,7 +6,8 @@ import {
   LinkFieldType,
 } from '@hubspot/cms-components/fields';
 
-const sectionTextDefault = 'Tell The Reader More';
+const titleDefault = 'Section Title';
+const locationDefault = 'Location';
 
 const sectionLinkDefault: LinkFieldType['default'] = {
   open_in_new_tab: false,
@@ -18,7 +19,8 @@ const sectionLinkDefault: LinkFieldType['default'] = {
 };
 
 const sectionGroupDefault = {
-  text: sectionTextDefault,
+  title: titleDefault,
+  location: locationDefault,
   sectionLink: sectionLinkDefault,
 };
 
@@ -29,7 +31,8 @@ const linkFieldSupportedTypes = [
 export const fields = (
   <ModuleFields>
     <FieldGroup label="Section 1" name="sectionOne" default={sectionGroupDefault}>
-      <TextField name="text" label="Text" default={sectionTextDefault} />
+      <TextField name="title" label="Title" default={titleDefault} />
+      <TextField name="location" label="Location" default={locationDefault} />
       <LinkField
         name="sectionLink"
         label="Link"
@@ -38,7 +41,8 @@ export const fields = (
       />
     </FieldGroup>
     <FieldGroup label="Section 2" name="sectionTwo" default={sectionGroupDefault}>
-      <TextField name="text" label="Text" default={sectionTextDefault} />
+      <TextField name="title" label="Title" default={titleDefault} />
+      <TextField name="location" label="Location" default={locationDefault} />
       <LinkField
         name="sectionLink"
         label="Link"
@@ -47,7 +51,8 @@ export const fields = (
       />
     </FieldGroup>
     <FieldGroup label="Section 3" name="sectionThree" default={sectionGroupDefault}>
-      <TextField name="text" label="Text" default={sectionTextDefault} />
+      <TextField name="title" label="Title" default={titleDefault} />
+      <TextField name="location" label="Location" default={locationDefault} />
       <LinkField
         name="sectionLink"
         label="Link"

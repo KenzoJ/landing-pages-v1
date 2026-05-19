@@ -1,0 +1,24 @@
+:root {
+  --landing-accent-green: #00e3ab;
+}
+
+.sectionHeader {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+}
+
+.mainText {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+}
+
+.subtitleText {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 300;
+  color: #fff;
+}
+
+.accentText {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--landing-accent-green);
+}

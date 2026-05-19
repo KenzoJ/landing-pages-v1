@@ -1,12 +1,11 @@
+import { Island } from '@hubspot/cms-components';
 import { TextFieldType } from '@hubspot/cms-components/fields';
-import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
-import { ButtonContentType } from '../../fieldLibrary/ButtonContent/types.js';
-import { Button } from '../Button/ButtonComponent.js';
+// @ts-expect-error -- ?island not typed
+import CtaFormEmbedIsland from './islands/CtaFormEmbedIsland.js?island';
 import styles from './cta.module.css';
 
 type CtaFieldValues = {
   headline: TextFieldType['default'];
-  button: ButtonContentType;
 };
 
 type CtaProps = {
@@ -14,24 +13,15 @@ type CtaProps = {
 };
 
 export function Component({ fieldValues }: CtaProps) {
-  const { headline, button } = fieldValues;
+  const { headline } = fieldValues;
 
   return (
     <section className={styles.cta} aria-label="Call to action">
       <div className={styles.inner}>
         {headline && <h2 className={styles.headline}>{headline}</h2>}
-        <Button
-          buttonStyle="primary"
-          buttonSize="medium"
-          href={getLinkFieldHref(button.buttonContentLink)}
-          rel={getLinkFieldRel(button.buttonContentLink)}
-          target={getLinkFieldTarget(button.buttonContentLink)}
-          showIcon={button.buttonContentShowIcon}
-          iconFieldPath="button.buttonContentIcon"
-          iconPosition={button.buttonContentIconPosition}
-        >
-          {button.buttonContentText}
-        </Button>
+        <div className={styles.form}>
+          <Island hydrateOn="load" module={CtaFormEmbedIsland} />
+        </div>
       </div>
     </section>
   );
@@ -41,4 +31,5 @@ export { fields } from './fields.js';
 
 export const meta = {
   label: 'CTA',
+  categories: ['forms_and_buttons'],
 };

@@ -3,9 +3,10 @@ import { ModuleFields, TextField } from '@hubspot/cms-components/fields';
 export const fields = (
   <ModuleFields>
     <TextField
-      name="headline"
-      label="Headline"
-      default="Ready to Get Started?"
+      name="title"
+      label="Title"
+      default="Curated Top picks in LOCATION"
     />
+    <TextField name="subtitle" label="Subtitle" default="" />
   </ModuleFields>
 );
