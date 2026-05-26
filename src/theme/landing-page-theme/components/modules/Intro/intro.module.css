@@ -88,3 +88,14 @@
   font-size: 1.125rem;
   line-height: 1.5;
 }
+
+@media (max-width: 40rem) {
+  .intro {
+    padding-inline: 2rem;
+  }
+
+  .copy {
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+  }
+}

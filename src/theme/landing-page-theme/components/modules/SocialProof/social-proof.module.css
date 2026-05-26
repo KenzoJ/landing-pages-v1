@@ -27,6 +27,7 @@
 }
 
 .mainImageWrapper {
+  width: 80%;
   overflow: hidden;
   border-radius: 0.25rem;
   background-color: var(--hsElevate--section--lightSection--1__backgroundColor, #eef1f4);
@@ -68,8 +69,8 @@
 
 .thumbnailImage {
   display: block;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5.4rem;
+  height: 5.4rem;
   object-fit: cover;
 }
 

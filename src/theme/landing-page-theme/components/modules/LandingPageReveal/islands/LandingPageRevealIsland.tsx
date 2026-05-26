@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 
-const REVEALED_CLASS = 'lp-scroll--revealed';
-const THRESHOLD = 0.55;
+const REVEALED_CLASS = 'lp-reveal--revealed';
+const THRESHOLD = 0.15;
+const ROOT_MARGIN = '80px 0px 80px 0px';
 
 export default function LandingPageRevealIsland() {
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>('[data-lp-scroll]');
-    if (sections.length === 0) return;
+    const targets = document.querySelectorAll<HTMLElement>('[data-lp-reveal]');
+    if (targets.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -17,11 +18,11 @@ export default function LandingPageRevealIsland() {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: THRESHOLD },
+      { threshold: THRESHOLD, rootMargin: ROOT_MARGIN },
     );
 
-    for (const section of sections) {
-      observer.observe(section);
+    for (const target of targets) {
+      observer.observe(target);
     }
 
     return () => observer.disconnect();

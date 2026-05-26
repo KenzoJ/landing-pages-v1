@@ -44,7 +44,7 @@
   content: counter(num);
 }
 
-:global(.lp-scroll--revealed) .counter {
+:global(.lp-reveal--revealed) .counter {
   animation: data-count-up 2s ease-out forwards;
 }
 

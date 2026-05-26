@@ -117,7 +117,10 @@ export function SearchableSelect({
   };
 
   return (
-    <div ref={containerRef} className={styles.selectWrapper}>
+    <div
+      ref={containerRef}
+      className={`${styles.selectWrapper} ${isOpen ? styles.selectWrapperOpen : ''}`}
+    >
       <input
         className={styles.input}
         type="text"

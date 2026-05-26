@@ -20,12 +20,17 @@
 
 .lp-scroll--2 {
   justify-content: flex-start;
+  gap: clamp(0.25rem, 1vw, 0.5rem);
+  min-height: auto;
   padding-block: 0;
 }
 
 .lp-scroll--4 {
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
   padding-block: 1rem;
+  overflow-x: clip;
 }
 
 :root {
@@ -49,7 +54,7 @@
   transform: translateY(var(--lp-reveal-offset));
 }
 
-.lp-scroll--revealed [data-lp-reveal] {
+[data-lp-reveal].lp-reveal--revealed {
   animation: fadeInUp 0.6s ease both;
 }
 
@@ -75,7 +80,7 @@
     transform: none;
   }
 
-  .lp-scroll--revealed [data-lp-reveal] {
+  [data-lp-reveal].lp-reveal--revealed {
     animation: none;
   }
 }
