@@ -40,7 +40,8 @@ export default function InformationWidgetIsland({
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleContentIndex, setVisibleContentIndex] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
+  const contentPanelRef = useRef<HTMLDivElement>(null);
   const wheelDeltaRef = useRef(0);
 
   useEffect(() => {
@@ -68,8 +69,10 @@ export default function InformationWidgetIsland({
   }, [items.length]);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+    const scrollTargets = [menuRef.current, contentPanelRef.current].filter(
+      (target): target is HTMLElement => target !== null,
+    );
+    if (scrollTargets.length === 0) return;
 
     const handleWheel = (event: WheelEvent) => {
       if (event.deltaY === 0) return;
@@ -88,8 +91,15 @@ export default function InformationWidgetIsland({
       wheelDeltaRef.current = 0;
     };
 
-    section.addEventListener('wheel', handleWheel, { passive: false });
-    return () => section.removeEventListener('wheel', handleWheel);
+    scrollTargets.forEach((target) => {
+      target.addEventListener('wheel', handleWheel, { passive: false });
+    });
+
+    return () => {
+      scrollTargets.forEach((target) => {
+        target.removeEventListener('wheel', handleWheel);
+      });
+    };
   }, [goToNext, goToPrevious]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -104,13 +114,12 @@ export default function InformationWidgetIsland({
 
   return (
     <section
-      ref={sectionRef}
       className={styles.widget}
       aria-label="Information"
     >
       <div className={styles.inner} data-lp-reveal="information-widget">
         <div className={styles.layout}>
-          <nav className={styles.menu} aria-label="Space types">
+          <nav ref={menuRef} className={styles.menu} aria-label="Space types">
             <div
               className={styles.menuViewport}
               tabIndex={0}
@@ -142,7 +151,7 @@ export default function InformationWidgetIsland({
             </div>
           </nav>
 
-          <div className={styles.contentPanel} aria-live="polite">
+          <div ref={contentPanelRef} className={styles.contentPanel} aria-live="polite">
             <div
               className={cx(
                 styles.contentInner,

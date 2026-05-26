@@ -1,4 +1,6 @@
 .outer {
+  padding-left: .5rem;
+  padding-right: .5rem;
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
@@ -13,26 +15,112 @@
   width: 100%;
   min-width: 0;
   align-items: stretch;
+  text-align: left;
 }
 
 .input {
+  --search-listings-input-border-color: #00e3ab9e;
+
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
   margin: 0;
   padding: 0.875rem 1rem;
-  border: 1px solid var(--hsElevate--section--lightSection--1__borderColor, rgb(0 0 0));
-  border-radius: 0.25rem;
-  background-color: var(--hsElevate--section--lightSection--1__backgroundColor, #fff);
-  color: rgb(0 0 0);
-  font: inherit;
+  border: 1px solid var(--search-listings-input-border-color);
+  border-radius: 0.5rem;
+  background-color: rgb(255 255 255 / 8%);
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.4;
+  text-align: left;
 }
 
 .input::placeholder {
-  color: var(--hsElevate--section--lightSection--1__textColor, #516f90);
-  opacity: 0.75;
+  color: rgb(212 237 249 / 60%);
+  opacity: 1;
+}
+
+.input:focus {
+  outline: 2px solid #00e3ab;
+  outline-offset: 2px;
+}
+
+.selectWrapper {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.selectDropdown {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  max-height: 12rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  overflow-y: auto;
+  border: 1px solid rgb(212 237 249 / 35%);
+  border-radius: 0.5rem;
+  background-color: rgb(9 21 43 / 96%);
+  list-style: none;
+  opacity: 0;
+  transform: translateY(-0.375rem) scale(0.98);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 25%) transparent;
+}
+
+.selectDropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.selectDropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.selectDropdown::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background-color: rgb(255 255 255 / 40%);
+}
+
+.selectDropdownOpen {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.selectOption,
+.selectOptionActive {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.625rem 1rem;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.selectOptionActive {
+  color: var(--landing-accent-green, #00e3ab);
+}
+
+.validationMessage {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #ffb4b4;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 .buttonWrapper {
@@ -41,12 +129,180 @@
   flex-shrink: 0;
 }
 
-.buttonWrapper :global(.hs-elevate-button) {
+.exploreButton {
+  --explore-button-accent: var(--landing-accent-green, #00e3ab);
+
+  position: relative;
+  display: inline-flex;
   box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  min-width: 9.375rem;
+  padding: 1rem 2rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--explore-button-accent);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
   white-space: nowrap;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
+}
+
+.exploreButton:hover {
+  background-color: var(--explore-button-accent);
+  color: #fff;
+}
+
+.exploreButton:focus-visible {
+  outline: 2px solid var(--explore-button-accent);
+  outline-offset: 4px;
+}
+
+.exploreButton:hover:focus-visible {
+  outline-color: #fff;
+}
+
+.exploreButtonLabel {
+  position: relative;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exploreButtonIcon {
+  display: block;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  fill: currentcolor;
+}
+
+.exploreButtonIconLeft {
+  margin-right: 1rem;
+}
+
+.exploreButtonIconRight {
+  margin-left: 1rem;
+}
+
+.exploreButtonShimmer {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(255 255 255 / 20%);
+  transform: rotate(12deg);
+  filter: blur(16px);
+  transition:
+    left 0.5s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.exploreButton:hover .exploreButtonShimmer {
+  left: 125%;
+  background-color: var(--explore-button-accent);
+  transition:
+    left 1s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.exploreButtonCorner {
+  position: absolute;
+  display: block;
+  width: 50%;
+  border-color: var(--explore-button-accent);
+  border-style: solid;
+  filter: drop-shadow(0 35px 35px rgb(0 0 0 / 25%));
+  transition:
+    height 0.3s ease,
+    border-color 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.exploreButton:hover .exploreButtonCorner {
+  border-color: #fff;
+}
+
+.exploreButtonCornerTopLeft {
+  top: 0;
+  left: 0;
+  height: 20%;
+  border-width: 2px 0 0 2px;
+  border-radius: 0.5rem 0 0;
+}
+
+.exploreButtonCornerTopRight {
+  top: 0;
+  right: 0;
+  height: 60%;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 0.5rem 0 0;
+}
+
+.exploreButton:hover .exploreButtonCornerTopRight {
+  height: 90%;
+}
+
+.exploreButtonCornerBottomLeft {
+  bottom: 0;
+  left: 0;
+  height: 60%;
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 0.5rem;
+}
+
+.exploreButton:hover .exploreButtonCornerBottomLeft {
+  height: 90%;
+}
+
+.exploreButtonCornerBottomRight {
+  right: 0;
+  bottom: 0;
+  height: 20%;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 0.5rem;
+}
+
+.exploreButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.exploreButton:disabled .exploreButtonShimmer {
+  left: -75%;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selectDropdown {
+    transition: none;
+    transform: none;
+  }
+
+  .selectDropdownOpen {
+    transform: none;
+  }
+
+  .exploreButtonShimmer {
+    display: none;
+  }
+
+  .exploreButtonCornerTopRight,
+  .exploreButtonCornerBottomLeft {
+    height: 90%;
+  }
 }
 
 @media (max-width: 40rem) {

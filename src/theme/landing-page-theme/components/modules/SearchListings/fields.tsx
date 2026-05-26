@@ -1,8 +1,20 @@
-import { ModuleFields, TextField, FieldGroup } from '@hubspot/cms-components/fields';
+import { ModuleFields, TextField, FieldGroup, AdvancedVisibility } from '@hubspot/cms-components/fields';
 import { ButtonContent } from '../../fieldLibrary/index.js';
 
+export const listingsBaseUrlDefault = 'https://staging.greenlightgo.tv/listings';
 export const studioPlaceholderDefault = 'Studios';
 export const cityPlaceholderDefault = 'New York City';
+
+const hiddenLinkVisibility: AdvancedVisibility = {
+  boolean_operator: 'AND',
+  criteria: [
+    {
+      controlling_field_path: 'listingsBaseUrl',
+      controlling_value_regex: '^__never_visible__$',
+      operator: 'MATCHES_REGEX',
+    },
+  ],
+};
 
 export const buttonDefault = {
   buttonContentText: 'Explore',
@@ -17,6 +29,7 @@ export const buttonDefault = {
 };
 
 export const searchListingsDefault = {
+  listingsBaseUrl: listingsBaseUrlDefault,
   studioPlaceholder: studioPlaceholderDefault,
   cityPlaceholder: cityPlaceholderDefault,
   button: buttonDefault,
@@ -26,8 +39,13 @@ export const searchListingsDefault = {
 export const searchListingsNestedFields = (
   <>
     <TextField
+      name="listingsBaseUrl"
+      label="Listings base URL"
+      default={listingsBaseUrlDefault}
+    />
+    <TextField
       name="studioPlaceholder"
-      label="Studio placeholder"
+      label="Category placeholder"
       default={studioPlaceholderDefault}
     />
     <TextField
@@ -41,6 +59,7 @@ export const searchListingsNestedFields = (
         linkDefault={{
           open_in_new_tab: false,
         }}
+        linkVisibility={hiddenLinkVisibility}
       />
     </FieldGroup>
   </>
