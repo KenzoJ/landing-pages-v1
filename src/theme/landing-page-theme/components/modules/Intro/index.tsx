@@ -71,7 +71,9 @@ export const fields = (
       label="Search listings"
       default={searchListingsDefault}
     >
-      {searchListingsNestedFields}
+      {searchListingsNestedFields({
+        listingsBaseUrlPath: 'searchListings.listingsBaseUrl',
+      })}
     </FieldGroup>
     <TextField
       name="tagline"
